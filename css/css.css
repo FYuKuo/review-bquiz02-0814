@@ -343,7 +343,6 @@ cursor:default;
 .content {
 	width: 100%;
 	height: 490px;
-	overflow: auto;
 }
 
 .p-20 {
