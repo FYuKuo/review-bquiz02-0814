@@ -348,3 +348,12 @@ cursor:default;
 .p-20 {
 	padding: 20px;
 }
+
+.list_item {
+	margin: 15px 0;
+	cursor: pointer;
+	color: blue;
+	text-decoration: underline;
+	text-underline-offset: 5px;
+	width: fit-content;
+}
