@@ -63,4 +63,8 @@
     }
 
 
+    function reset(){
+        $('#acc').val("");
+        $('#pw').val("");
+    }
 </script>
