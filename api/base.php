@@ -6,7 +6,7 @@ session_start();
 
 class DB
 {
-    protected $dsn;
+    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db15-0814";
     protected $pdo;
     protected $table;
 
@@ -94,7 +94,7 @@ class DB
                 }
             }
 
-            $sql = "UPDATE `$this->table` SET " . join(",",$array) . " WHERE ``id` = '{$array['id']}'";
+            $sql = "UPDATE `$this->table` SET " . join(",",$tmp) . " WHERE `id` = '{$array['id']}'";
         }else{
 
             $col = join("`,`",array_keys($array));
@@ -103,6 +103,7 @@ class DB
             $sql = "INSERT INTO `$this->table` (`$col`) VALUES ('$val')";
         }
 
+        // echo $sql;
         return $this->pdo->exec($sql);
     }
 
@@ -149,4 +150,26 @@ function dd($array)
 }
 
 
+
+$View = new DB('view');
+$Admin = new DB('admin');
+
+
+if(!isset($_SESSION['view'])){
+    
+    $view = $View->find(['date'=>date('Y-m-d')]);
+
+    if(empty($view)){
+
+        $View->save(['total'=>1,'date'=>date('Y-m-d')]);
+
+    }else{
+
+        $view['total']++;
+        $View->save($view);
+
+    }
+
+    $_SESSION['view'] = 1;
+}
 ?>
