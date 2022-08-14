@@ -153,6 +153,9 @@ function dd($array)
 
 $View = new DB('view');
 $Admin = new DB('admin');
+$Log = new DB('log');
+$News = new DB('news');
+$Que = new DB('que');
 
 
 if(!isset($_SESSION['view'])){
